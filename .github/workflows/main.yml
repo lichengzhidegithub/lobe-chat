@@ -1,0 +1,26 @@
+
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+
+jobs:
+  sync:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: 'main' # The branch that you want to sync
+
+    - name: Fetch Upstream
+      run: |
+        git remote add upstream https://github.com/lobehub/lobe-chat.git
+        git fetch upstream
+
+    - name: Merge Upstream Changes
+      run: |
+        git merge upstream/main # Replace 'main' with the branch that you want to sync if it's not 'main'
