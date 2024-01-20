@@ -23,4 +23,4 @@ jobs:
       run: |
         git config --global user.email "lichengzhibenrende@outlook.com"
         git config --global user.name "lichengzhidegithub"
-        git merge --allow-unrelated-histories upstream/main # 如果不是 'main' 分支，请替换为您想要同步的分支
+        git merge --allow-unrelated-histories --strategy=ours upstream/main
